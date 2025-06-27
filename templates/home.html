@@ -1,3 +1,127 @@
-<h1>
-    Hello world
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>California House Price Prediction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-something" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 30px 40px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #444;
+    }
+
+  footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #444;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .social-icons a:hover {
+      color: #0077b5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>California House Price Prediction</h1>
+
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="text" name="MedInc" placeholder="Median Income" required />
+      <input type="text" name="HouseAge" placeholder="House Age" required />
+      <input type="text" name="AveRooms" placeholder="Average Rooms" required />
+      <input type="text" name="AveBedrms" placeholder="Average Bedrooms" required />
+      <input type="text" name="Population" placeholder="Population" required />
+      <input type="text" name="AveOccup" placeholder="Average Occupancy" required />
+      <input type="text" name="Latitude" placeholder="Latitude" required />
+      <input type="text" name="Longitude" placeholder="Longitude" required />
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+
+ <footer>
+    &copy; 2025 California House Price Predictor. Built by Atharva Dharankar.
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/atharva-pandurang-dharankar" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/atharva-dharankar0007" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>
